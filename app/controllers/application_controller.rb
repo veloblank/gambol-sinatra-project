@@ -12,11 +12,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/signup" do
-
+    erb :"/users/new"
   end
 
   get "/login" do
-    
+
   end
 
 end
