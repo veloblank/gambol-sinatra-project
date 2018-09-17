@@ -11,4 +11,12 @@ class ApplicationController < Sinatra::Base
     erb :landing_page
   end
 
+  get "/signup" do
+
+  end
+
+  get "/login" do
+    
+  end
+
 end
