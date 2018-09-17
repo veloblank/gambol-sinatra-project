@@ -3,11 +3,8 @@ class User < ActiveRecord::Base
   has_many :betting_slips
   has_many :betting_slip_props
   has_many :props, through: :betting_slips
-  validates :username, uniqueness: true
-  validates :username, presence: true
-  validates :email, uniqueness: true
-  validates :email, presence: true
-  validates :password_digest, presence: true
+  validates_uniqueness of :username, :email
+  validates_presence_of :username, :email, :password_digest
 
 
 
