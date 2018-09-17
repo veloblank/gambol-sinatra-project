@@ -3,9 +3,9 @@ class CreateProps < ActiveRecord::Migration
     create_table :props do |t|
       t.string :title
       t.text :description
-      t.decimal :odds
-      t.decimal :risk
-      t.decimal :reward
+      t.decimal :odds, :precision => 3, :scale => 2
+      t.decimal :risk, :precision => 3, :scale => 2
+      t.decimal :reward, :precision => 3, :scale => 2
       t.timestamps null: false
     end
   end
