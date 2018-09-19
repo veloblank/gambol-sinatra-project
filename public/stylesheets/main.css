@@ -1,0 +1,21 @@
+body {
+  background-color: blue;
+}
+
+
+p#signup,
+p#login {
+    float:left;
+    border: none;
+    background-color: rgba(255,255,255,0.1);
+    padding: 5px;
+    border-radius: 17.5px;
+    height: 35px;
+    width: 85px;
+    text-align: center;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    text-decoration:none;
+    line-height: 25px;
+    color: rgb(255,255,255) !important;
+}
