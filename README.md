@@ -2,6 +2,7 @@
 This is a repository of my Flatiron School Sinatra project. It is a username/password login domain that allows users to create betting lists, populate them with various sportsbetting propositions (game winners, totals, etc.) and track them. A user can have many lists of props. A list belongs to a user and cannot be edited by other users.
 
 Specifications for the Sinatra Assessment
+
 Specs:
   x Use Sinatra to build the app
   x Include user accounts
