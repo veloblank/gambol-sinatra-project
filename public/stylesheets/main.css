@@ -5,17 +5,16 @@ body {
 
 p#signup,
 p#login {
-    float:left;
-    border: none;
+    float: left;
+    margin-right: 5px;
+    border: 2px solid white;
     background-color: rgba(255,255,255,0.1);
-    padding: 5px;
+    padding: 10px 25px;
     border-radius: 17.5px;
-    height: 35px;
+    height: auto;
     width: 85px;
     text-align: center;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    text-decoration:none;
-    line-height: 25px;
-    color: rgb(255,255,255) !important;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(255,255,255);
 }
