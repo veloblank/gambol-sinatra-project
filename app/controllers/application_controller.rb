@@ -15,7 +15,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/registrations/signup" do
-    erb :"/registrations/new"
+    erb :"/registrations/signup"
+  end
+
+  get "/registrations/login" do
+    if is_logged_in?(session)
+      redirect "/users/dashboard"
+    else
+      erb :"sessions/login"
+    end
   end
 
   post '/registrations/users' do
@@ -29,14 +37,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-
-    get "/registrations/login" do
-    erb :"sessions/login"
-
-
-  end
-
-  get '/registrations/logout' do
+  get '/logout' do
     session.clear
     redirect '/'
   end
