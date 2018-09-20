@@ -4,7 +4,7 @@ body {
 
 #site-welcome{
   text-align: center;
-  
+
 }
 
 .error-messages {
@@ -14,9 +14,11 @@ body {
 
 .topbar {
     background-color: white;
+    border: 5px solid black;
 }
 
 .inner-elements {
+
 
 }
 

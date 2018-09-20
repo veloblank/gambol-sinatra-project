@@ -18,6 +18,10 @@
   <div class="page-wrapper">
 
     <div class="topbar">
+      <div id="site-welcome">
+          <h1>Welcome to Gambol!</h1>
+      </div>
+
       <div class="inner-elements">
         <%if Helpers.is_logged_in?(session) %>
           <a href="/logout"><p id='logout'>Logout</p></a>
@@ -27,6 +31,7 @@
         <% end %>
       </div>
     </div>
+
 
     <%= yield %>
 
