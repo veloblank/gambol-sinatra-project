@@ -15,17 +15,22 @@
 </head>
 
 <body>
-    <div id="nav-bar">
-      <%if Helpers.is_logged_in?(session) %>
-      <a href="/registrations/logout"><p id='logout'>Logout</p></a>
-      <% else %>
-      <a href="/registrations/signup"><p id='signup'>Sign up</p></a>
-      <a href="/registrations/login"><p id='login'>Login</p></a>
-      <% end %>
+  <div class="page-wrapper">
+
+    <div class="topbar">
+      <div class="inner-elements">
+        <%if Helpers.is_logged_in?(session) %>
+          <a href="/logout"><p id='logout'>Logout</p></a>
+        <% else %>
+          <a href="/registrations/signup"><p id='signup'>Sign up</p></a>
+          <a href="/registrations/login"><p id='login'>Login</p></a>
+        <% end %>
+      </div>
     </div>
 
-      <%= yield %>
+    <%= yield %>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
+  </div>
 </body>

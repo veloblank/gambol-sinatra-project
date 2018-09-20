@@ -1,5 +1,10 @@
 body {
-  background-color: green;
+    background-color: #53a5dd;  #e6ecf0
+}
+
+#site-welcome{
+  text-align: center;
+  
 }
 
 .error-messages {
@@ -7,16 +12,20 @@ body {
   font-weight: 700;
   }
 
-#nav-bar {
-  background-color: white;
+.topbar {
+    background-color: white;
+}
+
+.inner-elements {
+
 }
 
 p#login,
 p#signup {
     float: left;
     margin-right: 5px;
-    border: 2px solid white;
-    background-color: rgba(255,255,255,0.1);
+    border: 5px solid white;
+    background-color: rgba(0, 0, 0, 1);
     padding: 10px 25px;
     border-radius: 17.5px;
     height: auto;
@@ -31,7 +40,7 @@ p#logout {
   float: right;
   margin-right: 5px;
   border: 2px solid white;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(0, 0, 0, 1);
   padding: 10px 25px;
   border-radius: 17.5px;
   height: auto;
