@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
 
-  post '/users/login' do
+  post '/sessions' do
     user = User.find_by(username: params["username"])
     if user && user.authenticate(params["password"])
-      "Welcome!"
+      session[:user_id] = user.id
+      redirect '/users/dashboard'
     else
       "Incorrect Password"
     end
