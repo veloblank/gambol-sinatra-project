@@ -1,4 +1,5 @@
 require './config/environment'
+require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -17,8 +18,15 @@ class ApplicationController < Sinatra::Base
     erb :"/registrations/new"
   end
 
-  post '/users' do
-
+  post '/registrations/users' do
+    @user = User.new(params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect "users/dashboard"
+    else
+      erb :"error"
+    end
   end
 
   get "/sessions/login" do

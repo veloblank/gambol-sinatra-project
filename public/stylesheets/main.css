@@ -2,6 +2,11 @@ body {
   background-color: blue;
 }
 
+.error-messages {
+  color: red;
+  font-weight: 700;
+  }
+
 
 p#signup,
 p#login {

@@ -1,0 +1,9 @@
+<h3>The following errors have occurred with your registration:</h3>
+<div class="error-messages">
+<ul>
+  <% @user.errors.each do |key, error| %>
+  <li><%= "Your #{key.to_s} #{error}." %></li>
+  <% end %>
+
+</ul>
+</div>
