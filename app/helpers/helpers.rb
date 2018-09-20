@@ -1,4 +1,4 @@
-class Helpers
+class Helpers #create a model in case I want to use the methods in my views, similar to a Learn.co Lab for Flatiron FlatBank
 
   def self.current_user(session_hash)
     user = User.find_by(id: session_hash[:user_id])
