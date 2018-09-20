@@ -13,11 +13,21 @@ class ApplicationController < Sinatra::Base
     erb :landing_page
   end
 
-  get "/signup" do
-    erb :"/users/new"
+  get "/registrations/signup" do
+    erb :"/registrations/new"
   end
 
-  get "/login" do
+  post '/users' do
+
+  end
+
+  get "/sessions/login" do
+
+  end
+
+
+  helpers do
+
 
   end
 
