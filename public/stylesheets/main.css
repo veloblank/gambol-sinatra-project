@@ -2,14 +2,29 @@ body {
   background-color: blue;
 }
 
+.signup {
+  
+
+
+}
+
 .error-messages {
   color: red;
   font-weight: 700;
   }
 
+header {
+  position: relative;
+  background-color: black;
 
-p#signup,
-p#login {
+
+}
+
+#nav-bar {
+}
+
+p#login,
+p#signup {
     float: left;
     margin-right: 5px;
     border: 2px solid white;
@@ -22,4 +37,22 @@ p#login {
     font-size: 1em;
     font-weight: 600;
     color: rgb(255,255,255);
+}
+
+p#logout {
+  float: right;
+  margin-right: 5px;
+  border: 2px solid white;
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px 25px;
+  border-radius: 17.5px;
+  height: auto;
+  width: 85px;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
+  color: rgb(255,255,255);
+
+
+
 }
