@@ -12,7 +12,7 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     background-color: #333;
 }
 
@@ -30,6 +30,66 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+
+}
+#props-page-wrapper {
+    margin-top: 50px;
+    width: 1200px;
+    height: auto;
+    border: 5px solid black;
+    overflow: auto;
+}
+
+.prop-attr {
+  font-size: 14px;
+}
+
+.btn-wrap {
+  background-color: black;
+}
+
+.index-btn {
+  margin: 2px;
+  display: inline-block;
+}
+
+.index-btn a{
+  text-decoration: none;
+  color: rgb(107, 104, 110);
+}
+
+#edit-btn {
+  padding-left: 153px;
+}
+
+#odds {
+  display: inline;
+}
+
+.index-prop {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  height: 150px;
+  width: 250px;
+  float: left;
+  border: 3px solid red;
+}
+
+.show-prop {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  height: 150px;
+  width: 250px;
+  float: left;
+  border: 5px dotted black;
+}
+
 
 
 
