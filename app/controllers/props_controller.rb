@@ -7,7 +7,6 @@ class PropsController < ApplicationController
 
   post '/props' do
     @prop = Prop.new(params)
-    binding.pry
     if @prop.valid?
       @prop.save
     else
@@ -22,7 +21,16 @@ class PropsController < ApplicationController
   end
 
   get '/props/:id/edit' do
-    "Edit Room!"
+    if is_logged_in?(session)
+      @prop = Prop.find_by(id: params[:id])
+      if !@prop
+        redirect "/props/prop_errors"
+      else
+        erb :"props/edit"
+      end
+    else
+      redirect '/'
+    end
 
   end
 
