@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/users/dashboard'
     else
-      
+
       redirect '/registrations/login'
     end
   end
@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     else
       redirect '/'
     end
+  end
+
+  get '/props' do
+    @props = Prop.all
+    erb :"/props/index"
   end
 
 

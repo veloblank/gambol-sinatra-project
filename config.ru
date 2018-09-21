@@ -7,5 +7,6 @@ end
 
 use Rack::MethodOverride
 use UsersController
+use PropsController
 
 run ApplicationController
