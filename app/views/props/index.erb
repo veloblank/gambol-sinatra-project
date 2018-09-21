@@ -10,9 +10,11 @@
           <button><a class="btn" href="/props/<%= prop.id %>">View</a>
         </div>
 
-        <div class="index-btn" id="edit-btn">
-          <button><a class="btn" href="/props/<%= prop.id %>/edit">Edit</a>
-        </div>
+        <% if Helpers.is_logged_in?(session) %>
+          <div class="index-btn" id="edit-btn">
+            <button><a class="btn" href="/props/<%= prop.id %>/edit">Edit</a></button>
+          </div>
+        <% end %>
       </div>
 
     </div>
