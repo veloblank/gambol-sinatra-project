@@ -19,40 +19,41 @@
     <div class="nav-bar">
       <ul>
         <li><a href="/users/dashboard">Dashboard</li></a>
-        <li><a href="/props">Sports Props</li></a>
         <div class="dropdown">
-          <button class="dropbtn">My Betting Lists
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <li>
+          <button class="dropbtn">Sports Props</button>
+            <div class="dropdown-content">
+              <a href="/props/new">Create New Prop</a>
+              <a href="/props">View all Props</a>
+            </div>
+        </div>
 
-            </li><a href="/users/betting_lists">My Betting Lists</a>
-            <a href="/betting_lists/new">Create New Betting List</a>
-          </div>
+        <div class="dropdown">
+          <button class="dropbtn">Betting Lists</button>
+            <div class="dropdown-content">
+              <a href="/users/betting_lists">My Betting Lists</a>
+              <a href="/betting_lists/new">Create New Betting List</a>
+            </div>
         </div>
 
       </ul>
+
+      <div>
+        <%if Helpers.is_logged_in?(session) %>
+          <a href="/logout"><p id='logout'>Logout</p></a>
+        <% else %>
+          <a href="/registrations/signup"><span id='signup'>Sign up</span></a>
+          <a href="/registrations/login"><span id='login'>Login</span></a>
+        <% end %>
+      </div>
+
+      <div class="container">
+
+        <%= yield %>
+
+      </div>
+
+
     </div>
-
-    <div>
-      <%if Helpers.is_logged_in?(session) %>
-        <a href="/logout"><p id='logout'>Logout</p></a>
-      <% else %>
-        <a href="/registrations/signup"><span id='signup'>Sign up</span></a>
-        <a href="/registrations/login"><span id='login'>Login</span></a>
-      <% end %>
-    </div>
-
-    <div class="container">
-
-      <%= yield %>
-
-    </div>
-
-
   </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-  </div>
 </body>

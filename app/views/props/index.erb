@@ -10,7 +10,7 @@
           <button><a class="btn" href="/props/<%= prop.id %>">View</a>
         </div>
 
-        <% if Helpers.is_logged_in?(session) && Helpers.current_user(session).is_admin?%>
+        <% if Helpers.is_logged_in?(session) && Helpers.current_user(session).is_admin%>
           <div class="index-btn" id="edit-btn">
             <button><a class="btn" href="/props/<%= prop.id %>/edit">Edit</a></button>
           </div>
