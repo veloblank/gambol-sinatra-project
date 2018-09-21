@@ -1,0 +1,15 @@
+<div>
+  <form action="/props/<%= @prop.id %>" method="patch">
+    <input type="hidden" id="hidden" name="_method" value="post">
+    <h3>Prop Title</h3>
+    <input type="text" name="title" value="<%= @prop.title %>"><br>
+    <h3>Prop Description</h3>
+    <input type="textarea" name="description" value="<%= @prop.description %>"><br>
+    <h3>Prop Odds</h3>
+    <input type="text" name="odds" value="<%= @prop.odds %>"><br>
+    <h3>Bettor Risk:</h3>
+    <input type="text" name="risk" value="<%= @prop.risk %>"><br>
+    <input type="submit" value="Edit Prop">
+  </form>
+
+</div>
