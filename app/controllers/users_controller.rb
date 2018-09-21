@@ -7,7 +7,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/users/dashboard'
     else
-      "Incorrect Password"
+      
+      redirect '/registrations/login'
     end
   end
 
