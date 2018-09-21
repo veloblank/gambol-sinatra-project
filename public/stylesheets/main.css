@@ -1,5 +1,5 @@
 body {
-    background-color: #53a5dd;  #e6ecf0
+    background-color: #53a5dd;
 }
 
 #site-welcome{
@@ -7,7 +7,12 @@ body {
 
 }
 
+
 .error-messages {
+  width: auto;
+  margin: 200px;
+  padding: 5px;
+  background-color: black;
   color: red;
   font-weight: 700;
   }
@@ -17,19 +22,22 @@ body {
     border: 5px solid black;
 }
 
+
 .inner-elements {
 
 
 }
 
-p#login,
-p#signup {
+
+
+span#login,
+span#signup {
     float: left;
-    margin-right: 5px;
+    margin: 10px;
     border: 5px solid white;
     background-color: rgba(0, 0, 0, 1);
     padding: 10px 25px;
-    border-radius: 17.5px;
+    border-radius: 10px;
     height: auto;
     width: 85px;
     text-align: center;
@@ -51,7 +59,4 @@ p#logout {
   font-size: 1em;
   font-weight: 600;
   color: rgb(255,255,255);
-
-
-
 }
