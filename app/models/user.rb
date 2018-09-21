@@ -6,9 +6,7 @@ class User < ActiveRecord::Base
   has_many :betting_slip_props
   has_many :props, through: :betting_slips
 
-
-
-
+# TODO: Need a method to make other users and admin and to keep track of the admins.
 
 
 end
