@@ -2,10 +2,35 @@ body {
     background-color: #53a5dd;
 }
 
-#site-welcome{
+#site-welcome {
+  display: inline;
   text-align: center;
 
+
 }
+.nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+
 
 
 .error-messages {
@@ -20,15 +45,8 @@ body {
 .topbar {
     background-color: white;
     border: 5px solid black;
+    text-align: right;
 }
-
-
-.inner-elements {
-
-
-}
-
-
 
 span#login,
 span#signup {
