@@ -19,13 +19,18 @@
     <div class="nav-bar">
       <ul>
         <li><a href="/users/dashboard">Dashboard</li></a>
-        <div class="dropdown">
-          <button class="dropbtn">Sports Props</button>
-            <div class="dropdown-content">
-              <a href="/props/new">Create New Prop</a>
-              <a href="/props">View all Props</a>
+
+        <% if Helpers.is_logged_in?(session) && Helpers.current_user(session).is_admin %>
+            <div class="dropdown">
+              <button class="dropbtn">Sports Props</button>
+                <div class="dropdown-content">
+                  <a href="/props/new">Create New Prop</a>
+                  <a href="/props">View all Props</a>
+                </div>
             </div>
-        </div>
+        <% else %>
+            <li><a href="/props">Sports Props</li></a>
+        <% end %>
 
         <div class="dropdown">
           <button class="dropbtn">Betting Lists</button>
