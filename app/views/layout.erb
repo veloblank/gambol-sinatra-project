@@ -19,21 +19,25 @@
 
     <div class="topbar">
       <div id="site-welcome">
-          <h1>Welcome to Gambol!</h1>
+          <h1>Gambol</h1>
       </div>
 
       <div class="inner-elements">
         <%if Helpers.is_logged_in?(session) %>
           <a href="/logout"><p id='logout'>Logout</p></a>
         <% else %>
-          <a href="/registrations/signup"><p id='signup'>Sign up</p></a>
-          <a href="/registrations/login"><p id='login'>Login</p></a>
+          <a href="/registrations/signup"><span id='signup'>Sign up</span></a>
+          <a href="/registrations/login"><span id='login'>Login</span></a>
         <% end %>
       </div>
     </div>
 
+    <div class="container">
 
-    <%= yield %>
+      <%= yield %>
+
+    </div>
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
