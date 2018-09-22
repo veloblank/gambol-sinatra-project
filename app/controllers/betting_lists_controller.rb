@@ -1,0 +1,5 @@
+class BettingListsController < ApplicationController
+
+
+
+end

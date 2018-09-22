@@ -6,6 +6,7 @@ end
 
 
 use Rack::MethodOverride
+use BettingListsController
 use UsersController
 use PropsController
 
