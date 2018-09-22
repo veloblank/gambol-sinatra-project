@@ -1,0 +1,10 @@
+<div class="error-messages">
+  <h3>The following errors have occurred with your registration:</h3>
+<ul>
+  <% @user.errors.each do |key, error| %>
+  <% break if key == :password_digest %>
+  <li><%= "Your #{key.to_s} #{error}." %></li>
+  <% end %>
+
+</ul>
+</div>

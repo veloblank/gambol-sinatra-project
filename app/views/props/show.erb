@@ -1,0 +1,14 @@
+<div class="show-prop-wrapper">
+  <div class="show-prop">
+    <h3><%= @prop.title %></h3>
+    <p><%= @prop.description %></p>
+    <p><%= @prop.odds %></p>
+
+  <div class="delete-btn">
+    <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
+      <input type="hidden" id="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Prop">
+    </form>
+  </div>
+</div>
+</div>

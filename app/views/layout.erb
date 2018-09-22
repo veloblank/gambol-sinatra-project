@@ -11,21 +11,55 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
+
 <body>
-  <div class="wrapper">
+  <div class="page-wrapper">
+    <div class="nav-bar">
+      <ul>
+        <li><a href="/users/dashboard">Dashboard</li></a>
 
-      <%= yield %>
+        <% if Helpers.is_logged_in?(session) && Helpers.current_user(session).is_admin %>
+            <div class="dropdown">
+              <button class="dropbtn">Sports Props</button>
+                <div class="dropdown-content">
+                  <a href="/props/new">Create New Prop</a>
+                  <a href="/props">View all Props</a>
+                </div>
+            </div>
+        <% else %>
+            <li><a href="/props">Sports Props</li></a>
+        <% end %>
 
-    <footer class="branding">
-      <small>&copy; 2018 <strong>GambolSinatraProject</strong></small>
-    </footer>
+        <div class="dropdown">
+          <button class="dropbtn">Betting Lists</button>
+            <div class="dropdown-content">
+              <a href="/users/betting_lists">My Betting Lists</a>
+              <a href="/betting_lists/new">Create New Betting List</a>
+            </div>
+        </div>
+
+      </ul>
+
+      <div>
+        <%if Helpers.is_logged_in?(session) %>
+          <a href="/logout"><p id='logout'>Logout</p></a>
+        <% else %>
+          <a href="/registrations/signup"><span id='signup'>Sign up</span></a>
+          <a href="/registrations/login"><span id='login'>Login</span></a>
+        <% end %>
+      </div>
+
+      <div class="container">
+
+        <%= yield %>
+
+      </div>
+
+
+    </div>
   </div>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <!--[if lt IE 7]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-  <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </body>
