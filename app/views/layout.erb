@@ -36,7 +36,7 @@
         <div class="dropdown">
           <button class="dropbtn">Betting Lists</button>
             <div class="dropdown-content">
-              <a href="/users/betting_lists">My Betting Lists</a>
+              <a href="/users/"<%= Helpers.current_user(session) %>/betting_slips">My Betting Lists</a>
               <a href="/betting_lists/new">Create New Betting List</a>
             </div>
         </div>

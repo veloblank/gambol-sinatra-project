@@ -1,0 +1,13 @@
+<div class="show-betting-slip-wrapper">
+  <div class="show-slip">
+    <h3><%= @slip.name %></h3>
+    <p><%= @slip.description %></p>
+
+  <div class="delete-btn">
+    <form class="delete-slip-btn" action="/betting-slips/<%= @slip.id %>/delete" method="post">
+      <input type="hidden" id="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Slip">
+    </form>
+  </div>
+</div>
+</div>
