@@ -1,0 +1,30 @@
+<div class="dashboard-wrapper">
+  <div class="all-panels">
+
+  <div class="all-users-panel">
+    <div><h2>USERS:</h2></div>
+    <% @users.each do |user| %>
+      <% if user.is_admin%>
+        <div><%= user.username + " -- administrator" %></div>
+      <% else %>
+      <div><%= user.username %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="all-panels">
+  <div class="all-betting_slips-panel">
+    <div><h2>BETTING SLIPS:</h2></div>
+    <div class="flex-container">
+    <% @betting_slips.each do |slip| %>
+        <div class="betting-slip-attr"><%= slip.name %></div>
+        <div class="betting-slip-attr" id="slip-user"><%= User.find_by(slip.user_id).username %> </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</div>

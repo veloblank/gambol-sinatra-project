@@ -75,6 +75,39 @@ li a:hover {
     display: block;
 }
 
+.dashboard-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+  background-color: white;
+}
+
+.betting-slip-attr {
+  background-color: rgba(43, 96, 200, 0.65);
+  margin: 5px 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+}
+
+#slip-user {
+}
+
+.all-panels {
+  display: inline-block;
+  width: 30%;
+  margin: 50px 200px;
+  padding: 15px 40px 20px 40px;
+  background-color: white;
+  font-weight: 700;
+  box-sizing: border-box;
+
+
+}
+
 .container {
   display: flex;
   flex-flow: row wrap;
@@ -126,6 +159,7 @@ li a:hover {
   width: 250px;
   float: left;
   border: 3px solid red;
+  box-sizing: border-box;
 }
 
 .show-prop {
@@ -136,6 +170,7 @@ li a:hover {
   width: 250px;
   float: left;
   border: 5px dotted black;
+  box-sizing: border-box;
 }
 
 .delete-btn {
