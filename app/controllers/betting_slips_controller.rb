@@ -1,0 +1,5 @@
+class BettingSlipsController < ApplicationController
+
+
+
+end
