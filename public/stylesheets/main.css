@@ -21,6 +21,7 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
 }
 
 li a:hover {
@@ -39,7 +40,7 @@ li a:hover {
     color: white;
     padding: 14px 16px;
     background-color: inherit;
-    font-family: inherit;
+    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     margin: 0;
 }
