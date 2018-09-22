@@ -20,6 +20,7 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 li a:hover {
@@ -39,6 +40,7 @@ li a:hover {
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
+    text-transform: uppercase;
     margin: 0;
 }
 
@@ -89,6 +91,10 @@ li a:hover {
   font-size: 14px;
 }
 
+.prop-box {
+
+}
+
 .btn-wrap {
   background-color: black;
 }
@@ -131,6 +137,29 @@ li a:hover {
   border: 5px dotted black;
 }
 
+.delete-btn {
+  float: right;
+}
+
+.errors-container {
+  text-align: center;
+  font-weight: 700;
+  color: black;
+  font-size: 25px;
+  font-family: serif;
+}
+
+.prop-errors {
+  border: 5px solid white; */
+  border-radius: 30px;
+  background-color: #e4241a;
+  width: 600px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 
