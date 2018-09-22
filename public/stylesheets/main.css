@@ -81,8 +81,10 @@ li a:hover {
 }
 
 .flex-container {
-  display: flex;
+  display: inline-block;
   background-color: white;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .betting-slip-attr {
@@ -91,9 +93,6 @@ li a:hover {
   padding-left: 50px;
   padding-right: 50px;
 
-}
-
-#slip-user {
 }
 
 .all-panels {
@@ -114,6 +113,7 @@ li a:hover {
 
 }
 #props-page-wrapper {
+  display: block;
     margin-top: 50px;
     width: 1105px;
     height: auto;
@@ -121,46 +121,61 @@ li a:hover {
     overflow: auto;
 }
 
-.prop-attr {
-  font-size: 14px;
+.index-prop {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  height: 200px;
+  width: 250px;
+  float: left;
+  border: 3px solid red;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
-.prop-box {
+.index-prop span {
+  display: block;
+  padding-bottom: 10px;
+}
 
+.prop-attr-desc {
+  font-size: 16px;
+}
+
+.prop-attr {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .btn-wrap {
+  position: relative;
   background-color: black;
+  text-align: center;
 }
 
 .index-btn {
-  margin: 2px;
   display: inline-block;
+  margin: 3px 3px;
 }
 
 .index-btn a{
   text-decoration: none;
+  text-align: center;
   color: black;
 }
 
 #edit-btn {
-  padding-left: 153px;
+  padding: 2px 25px;
+}
+
+#view-btn {
+  padding: 2px 25px;
 }
 
 #odds {
   display: inline;
 }
 
-.index-prop {
-  display: inline-block;
-  padding: 5px;
-  margin: 5px;
-  height: 150px;
-  width: 250px;
-  float: left;
-  border: 3px solid red;
-  box-sizing: border-box;
-}
 
 .show-prop {
   display: inline-block;
