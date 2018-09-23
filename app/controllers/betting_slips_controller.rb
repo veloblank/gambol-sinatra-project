@@ -1,5 +1,14 @@
 class BettingSlipsController < ApplicationController
 
+  get '/betting-slips' do
+    if is_logged_in?(session)
+      @user = current_user(session)
+      @slips = @user.betting_slips.all
+      erb :"betting-slips/index"
+    else
+      redirect '/'
+    end
+  end
 
   get '/betting-slips/new' do
     if is_logged_in?(session)
@@ -20,15 +29,6 @@ class BettingSlipsController < ApplicationController
     end
   end
 
-  get '/betting-slips' do
-    if is_logged_in?(session)
-      @user = current_user(session)
-      @slips = @user.betting_slips.all
-      erb :"betting-slips/index"
-    else
-      redirect '/'
-    end
-  end
 
   get '/users/:id/betting-slips/:slip_num' do
     if is_logged_in?(session)
