@@ -3,7 +3,9 @@
 <ul>
   <% @user.errors.each do |key, error| %>
   <% break if key == :password_digest %>
-  <li><%= "Your #{key.to_s} #{error}." %></li>
+  <div>    
+    <li id="reg-error"><%= "Your #{key.to_s} #{error}." %></li>
+  </div>
   <% end %>
 
 </ul>

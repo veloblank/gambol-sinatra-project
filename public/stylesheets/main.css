@@ -168,6 +168,10 @@ li a:hover {
   padding: 2px 25px;
 }
 
+.delete-slip-btn {
+  float: left;
+}
+
 #view-btn {
   padding: 2px 25px;
 }
@@ -188,8 +192,19 @@ li a:hover {
   box-sizing: border-box;
 }
 
-.delete-btn {
+.show-betting-slip-wrapper {
+  padding: 20px;
+  text-align: center;
+
+}
+.delete-btn-wrapper {
+  display: inline-block;
+
   float: right;
+}
+
+#reg-error {
+
 }
 
 .errors-container {
@@ -221,6 +236,7 @@ li a:hover {
   background-color: black;
   color: red;
   font-weight: 700;
+  text-align: center;
   }
 
 .topbar {
