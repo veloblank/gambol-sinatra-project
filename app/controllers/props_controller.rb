@@ -5,6 +5,11 @@ class PropsController < ApplicationController
     erb :"/props/new"
   end
 
+  get '/props' do
+    @props = Prop.all
+    erb :"/props/index"
+  end
+
   post '/props' do
     @prop = Prop.new(params)
     if @prop.valid?
@@ -15,6 +20,12 @@ class PropsController < ApplicationController
     erb :"/props/show"
   end
 
+  get '/props/:id/add' do
+    prop = Prop.find_by(id: params["id"])
+    session["selected_props"] << prop
+    redirect '/props'
+  end
+
   get '/prop_errors' do
     erb :prop_errors
 
@@ -22,7 +33,7 @@ class PropsController < ApplicationController
 
   get '/props/:id' do
     @prop = Prop.find_by(id: params[:id])
-    if @prop
+    if @prop && is_logged_in?(session)
       erb :"/props/show"
     else
       redirect "/prop_errors"

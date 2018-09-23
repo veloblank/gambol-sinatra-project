@@ -7,7 +7,11 @@
   <div class="delete-btn">
     <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
       <input type="hidden" id="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Prop">
+
+      <div class="show-btn-wrapper">
+        <div><button type="button"><a href="/props/<%= @prop.id %>/add">Add Prop to Pending</button></div>
+        <div><button type="button"><a href="/props/<%= @prop.id %>/delete">Delete Prop</button></div>
+      </div>
     </form>
   </div>
 </div>

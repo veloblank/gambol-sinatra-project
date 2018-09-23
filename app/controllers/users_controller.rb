@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: params["username"])
     if user && user.authenticate(params["password"])
       session[:user_id] = user.id
+      session[:selected_props] = []
       redirect '/users/dashboard'
     else
 
@@ -19,17 +20,9 @@ class UsersController < ApplicationController
       @betting_slips = BettingSlip.all.compact
        erb :"users/dashboard"
     else
+
       redirect '/'
     end
   end
-
-  get '/props' do
-    @props = Prop.all
-    erb :"/props/index"
-  end
-
-
-
-
 
 end
