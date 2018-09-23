@@ -29,6 +29,22 @@ class BettingSlipsController < ApplicationController
     end
   end
 
+  post '/betting-slips/:id/add-picks' do
+    @slip = BettingSlip.find_by(id: params[:id])
+    @props = session["selected_props"]
+    # TODO: FIX THIS ISSUE WITH ASSOCIATIONS ON MONDAY WITH 1:1 SUPPORT
+
+
+    binding.pry
+    # @props.each do |prop|
+    #   @slip.props << prop
+    #
+    # end
+
+    redirect '/'
+
+  end
+
 
   get '/users/:id/betting-slips/:slip_num' do
     if is_logged_in?(session)
