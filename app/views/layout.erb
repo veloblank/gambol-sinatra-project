@@ -59,12 +59,21 @@
       </div>
 
       <div class="prop-sidenav">
-        <% if !Helpers.is_logged_in?(session) %>
-          <a href="/registrations/login">You Must Login to View List</a>
-        <% else %>
-            <% session["selected_props"].each do |prop| %>
+        <% if !session["selected_props"].compact.empty? || Helpers.is_logged_in?(session)%>
+          <div style="text-align: center;" class="clear-pending">
+            <a href="/props/clear_pending_picks">Clear</a>
+          </div>
+        <% end %>
+
+        <% if !Helpers.is_logged_in?(session)%>
+              <a href="/registrations/login">You Must Login to View List</a>
+        <% elsif Helpers.is_logged_in?(session) && session["selected_props"]%>
+          <% session["selected_props"].compact.each do |i| %>
+            <% if prop = Prop.find_by(id: i.to_i) %>
                 <div><a href="/props/<%= prop.id %>"><%= prop.title %></a></div>
               <% end %>
+          <% end %>
+          <% else %>
         <% end %>
       </div>
 
