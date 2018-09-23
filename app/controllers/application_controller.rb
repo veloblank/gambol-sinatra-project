@@ -1,5 +1,4 @@
 require './config/environment'
-require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -17,9 +16,10 @@ class ApplicationController < Sinatra::Base
 
   get '/logout' do
     session.clear
+    session["selected_props"] = []    #throws an error when Logged out bc session["selected_props"] is iterated on after the redirect
     redirect '/'
+    # TODO: Fix the nil class error without reassigning the session hash just before the redirect
   end
-
 
   helpers do
     def current_user(session_hash)
