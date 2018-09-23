@@ -34,10 +34,10 @@
         <% end %>
 
         <div class="dropdown">
-          <button class="dropbtn">Betting Lists</button>
+          <button class="dropbtn">Betting Slips</button>
             <div class="dropdown-content">
-              <a href="/users/"<%= Helpers.current_user(session) %>/betting_slips">My Betting Lists</a>
-              <a href="/betting_lists/new">Create New Betting List</a>
+              <a href="/betting-slips">My Betting Lists</a>
+              <a href="/betting-slips/new">Create New Betting Slips</a>
             </div>
         </div>
 
@@ -56,6 +56,16 @@
 
         <%= yield %>
 
+      </div>
+
+      <div class="prop-sidenav">
+        <% if !Helpers.is_logged_in?(session) %>
+          <a href="/registrations/login">You Must Login to View List</a>
+        <% else %>
+            <% session["selected_props"].each do |prop| %>
+                <div><a href="/props/<%= prop.id %>"><%= prop.title %></a></div>
+              <% end %>
+        <% end %>
       </div>
 
 
