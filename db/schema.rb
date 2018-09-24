@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924003503) do
+ActiveRecord::Schema.define(version: 20180924012036) do
+
+  create_table "betting_slip_props", force: :cascade do |t|
+    t.integer "betting_slip_id"
+    t.integer "prop_id"
+  end
 
   create_table "betting_slips", force: :cascade do |t|
     t.string   "name"
