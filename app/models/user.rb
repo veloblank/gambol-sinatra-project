@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :betting_slips
-  has_many :betting_slip_props
-  has_many :props, through: :betting_slip_props
+
+  has_many :user_props
+  has_many :props, through: :user_props
 
   has_secure_password
   validates_uniqueness_of :username, :email

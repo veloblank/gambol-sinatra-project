@@ -1,4 +1,4 @@
-class BettingSlipProp < ActiveRecord::Base
+class UserProp < ActiveRecord::Base
   belongs_to :user
   belongs_to :prop
 

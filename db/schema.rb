@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180923221612) do
-
-  create_table "betting_slip_props", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "betting_slip_id"
-  end
+ActiveRecord::Schema.define(version: 20180924003503) do
 
   create_table "betting_slips", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +29,11 @@ ActiveRecord::Schema.define(version: 20180923221612) do
     t.float    "reward"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "user_props", force: :cascade do |t|
+    t.integer "prop_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
