@@ -36,7 +36,6 @@ class BettingSlipsController < ApplicationController
       prop = Prop.find_by(id: prop_id)
       slip.props << prop
     end
-    binding.pry
     if slip.save
       redirect "/props/clear_pending_picks"
     else
@@ -50,6 +49,7 @@ class BettingSlipsController < ApplicationController
     if is_logged_in?(session)
       @slip = BettingSlip.find_by(id: params[:slip_num])
       if @slip && current_user(session).id == params[:id].to_i
+        @props = @slip.props
         erb :"betting-slips/show"
       else
         redirect "prop_errors"
