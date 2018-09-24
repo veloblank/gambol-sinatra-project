@@ -4,13 +4,15 @@
     <p><%= @slip.description %></p>
   </div>
 
-  <div class="delete-btn-wrapper">
-    <div class="add-btn">
-      <form action="/betting-slips/<%= @slip.id %>/add-picks" method="post">
-        <input type="submit" value="Add Picks to List">
-      </form>
+  <% if !session["selected_props"].empty? %>
+    <div class="delete-btn-wrapper">
+      <div class="add-btn">
+        <form action="/betting-slips/<%= @slip.id %>/add-picks" method="post">
+          <input type="submit" value="Add Picks to List">
+        </form>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="delete-btn">
     <form class="delete-slip-btn" action="/betting-slips/<%= @slip.id %>/delete" method="post">
