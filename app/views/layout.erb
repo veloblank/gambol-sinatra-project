@@ -61,7 +61,7 @@
       <div class="prop-sidenav">
         <% if !session["selected_props"].compact.empty? || Helpers.is_logged_in?(session)%>
           <div style="text-align: center;" class="clear-pending">
-            <a href="/props/clear_pending_picks">Clear</a>
+            <button><a href="/props/clear_pending_picks">Clear</a></button>
           </div>
         <% end %>
 
