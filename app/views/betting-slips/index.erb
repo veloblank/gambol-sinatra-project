@@ -1,0 +1,15 @@
+<div>
+  <% @slips.each do |slip| %>
+    <div class="betting-lists-wrapper">
+      <div class="betting-list">
+        <h3><%= slip.name %></h3>
+        <p><%= slip.description %></p>
+      </div>
+      <div class="betting-list-view-btn-wrapper">
+        <div class="betting-list-btn">
+          <button type="button"><a href="/users/<%= @user.id %>/betting-slips/<%= slip.id %>">View List</a></button>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>

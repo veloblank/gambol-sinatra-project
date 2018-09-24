@@ -75,12 +75,45 @@ li a:hover {
     display: block;
 }
 
+.dashboard-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.flex-container {
+  display: inline-block;
+  background-color: white;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.betting-slip-attr {
+  background-color: rgba(43, 96, 200, 0.65);
+  margin: 5px 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+}
+
+.all-panels {
+  display: inline-block;
+  width: 30%;
+  margin: 50px 200px;
+  padding: 15px 40px 20px 40px;
+  background-color: white;
+  font-weight: 700;
+  box-sizing: border-box;
+
+
+}
+
 .container {
   display: flex;
   flex-flow: row wrap;
 
 }
 #props-page-wrapper {
+  display: block;
     margin-top: 50px;
     width: 1105px;
     height: auto;
@@ -88,45 +121,65 @@ li a:hover {
     overflow: auto;
 }
 
-.prop-attr {
-  font-size: 14px;
+.index-prop {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  height: 200px;
+  width: 250px;
+  float: left;
+  border: 3px solid red;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
-.prop-box {
+.index-prop span {
+  display: block;
+  padding-bottom: 10px;
+}
 
+.prop-attr-desc {
+  font-size: 16px;
+}
+
+.prop-attr {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .btn-wrap {
+  position: relative;
   background-color: black;
+  text-align: center;
 }
 
 .index-btn {
-  margin: 2px;
   display: inline-block;
+  margin: 3px 3px;
 }
 
 .index-btn a{
   text-decoration: none;
+  text-align: center;
   color: black;
 }
 
 #edit-btn {
-  padding-left: 153px;
+  padding: 2px 25px;
+}
+
+.delete-slip-btn {
+  float: left;
+}
+
+#view-btn {
+  padding: 2px 25px;
 }
 
 #odds {
   display: inline;
 }
 
-.index-prop {
-  display: inline-block;
-  padding: 5px;
-  margin: 5px;
-  height: 150px;
-  width: 250px;
-  float: left;
-  border: 3px solid red;
-}
 
 .show-prop {
   display: inline-block;
@@ -136,10 +189,22 @@ li a:hover {
   width: 250px;
   float: left;
   border: 5px dotted black;
+  box-sizing: border-box;
 }
 
-.delete-btn {
+.show-betting-slip-wrapper {
+  padding: 20px;
+  text-align: center;
+
+}
+.delete-btn-wrapper {
+  display: inline-block;
+
   float: right;
+}
+
+#reg-error {
+
 }
 
 .errors-container {
@@ -171,6 +236,7 @@ li a:hover {
   background-color: black;
   color: red;
   font-weight: 700;
+  text-align: center;
   }
 
 .topbar {
@@ -178,6 +244,37 @@ li a:hover {
     border: 5px solid black;
     text-align: right;
 }
+
+.show-btn-wrapper {
+  display: inline-block;
+}
+
+.prop-sidenav {
+    width: 300px;
+    height: 400px;
+    position: fixed;
+    z-index: 1;
+    bottom: 10px;
+    right: 10px;
+    background: #eee;
+    overflow: scroll;
+    padding: 8px 0;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+.prop-sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+}
+
+.prop-sidenav a:hover {
+    color: #064579;
+}
+
 
 span#login,
 span#signup {

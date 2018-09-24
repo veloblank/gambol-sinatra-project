@@ -3,12 +3,16 @@
     <h3><%= @prop.title %></h3>
     <p><%= @prop.description %></p>
     <p><%= @prop.odds %></p>
+  </div>
 
   <div class="delete-btn">
     <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
       <input type="hidden" id="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Prop">
-    </form>
+
+        <div class="show-btn-wrapper">
+          <div><input type="submit" value="Delete"></div>
+        </div>
+      </form>
+      <div><button type="button"><a href="/props/<%= @prop.id %>/add">Add Prop to Pending</a></button></div>
   </div>
-</div>
 </div>

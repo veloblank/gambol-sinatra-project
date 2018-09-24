@@ -1,0 +1,31 @@
+<div class="show-betting-slip-wrapper">
+  <% if !session["selected_props"].empty? %>
+    <div class="delete-btn-wrapper">
+      <div class="add-btn">
+        <form action="/betting-slips/<%= @slip.id %>/add-picks" method="post">
+          <input type="submit" value="Add Picks to List">
+        </form>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="delete-btn">
+    <form class="delete-slip-btn" action="/betting-slips/<%= @slip.id %>/delete" method="post">
+      <input type="hidden" id="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Slip">
+    </form>
+  </div>
+
+  <div class="show-slip">
+    <h3><%= @slip.name %></h3>
+    <p><%= @slip.description %></p>
+  </div><hr>
+
+<% if @slip.props %>
+    <% @props.each do |prop| %>
+      <div><%= prop.title %></div>
+      <div><%= prop.description %></li></div>
+      <div><%= prop.odds %></div><br>
+    <% end %>
+<% end %>
+</div>

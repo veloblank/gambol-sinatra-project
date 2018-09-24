@@ -1,5 +1,4 @@
 require './config/environment'
-require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,6 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    #use Rack::Flash
     set :session_secret, "my-application-secret-secret"
   end
 
@@ -14,34 +14,12 @@ class ApplicationController < Sinatra::Base
     erb :landing_page
   end
 
-  get "/registrations/signup" do
-    erb :"/registrations/signup"
-  end
-
-  get "/registrations/login" do
-    if is_logged_in?(session)
-      redirect "/users/dashboard"
-    else
-      erb :"sessions/login"
-    end
-  end
-
-  post '/registrations/users' do
-    @user = User.new(params)
-    if @user.valid?
-      @user.save
-      session[:user_id] = @user.id
-      redirect "users/dashboard"
-    else
-      erb :"error"
-    end
-  end
-
   get '/logout' do
     session.clear
+    session["selected_props"] = []    #throws an error when Logged out bc session["selected_props"] is iterated on after the redirect
     redirect '/'
+    # TODO: Fix the nil class error without reassigning the session hash just before the redirect
   end
-
 
   helpers do
     def current_user(session_hash)
@@ -52,8 +30,5 @@ class ApplicationController < Sinatra::Base
     def is_logged_in?(session_hash)
       !!current_user(session_hash)
     end
-
-
   end
-
 end
