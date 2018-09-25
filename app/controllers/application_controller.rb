@@ -15,14 +15,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/make-admin/:id" do
-    if current_user(session).is_admin
-      @user = User.find_by(id: params["id"])
+    @user = User.find_by(id: params["id"])
+    if !is_logged_in?(session) || current_user(session) == @user
+        redirect "/users/dashboard"
+    elsif
+      current_user(session).is_admin
       @user.is_admin = !@user.is_admin
       @user.save
+      redirect "/users/dashboard"
     else
       redirect "/users/dashboard"
     end
-    redirect "/users/dashboard"
   end
 
   get '/logout' do
