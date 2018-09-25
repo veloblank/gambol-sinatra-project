@@ -169,7 +169,8 @@ li a:hover {
 }
 
 .delete-slip-btn {
-  float: left;
+  display: inline-block;
+  padding-left: 5px;
 }
 
 #view-btn {
@@ -204,6 +205,7 @@ li a:hover {
 }
 
 #reg-error {
+  display: block;
 
 }
 

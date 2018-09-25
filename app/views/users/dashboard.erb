@@ -1,29 +1,39 @@
 <div class="dashboard-wrapper">
-  <div class="all-panels">
-    <div class="all-users-panel">
-      <div><h2>USERS:</h2></div>
-      <% @users.each do |user| %>
-        <% if user.is_admin%>
-          <div><%= user.username + " -- administrator" %></div>
-        <% else %>
-        <div><%= user.username %></div>
-        <% end %>
-      <% end %>
-    </div>
-</div>
+        <div class="all-panels">
+          <div class="all-users-panel">
+            <div><h2>USERS:</h2></div>
+            <% if Helpers.current_user(session).is_admin %>
+                <% @users.each do |user| %>
+                  <% if user.is_admin%>
+                    <div><%= user.username + " -- administrator " %>
+                      <a href="/make-admin/<%= user.id %>">Change Admin Status</a>
+                    </div>
+                  <% else %>
+                    <div><%= user.username %>
+                      <a href="/make-admin/<%= user.id %>">Make Admin</a></div>
+                  <% end %>
+                <% end %>
+            <% else %>
+                <% @users.each do |user| %>
+                  <% if user.is_admin%>
+                    <div><%= user.username + " -- administrator" %></div>
+                  <% else %>
+                    <div><%= user.username %></div>
+                  <% end %>
+                <% end %>
+            <% end %>
+          </div>
+      </div>
 
-<div class="all-panels">
-  <div class="all-betting_slips-panel">
-    <div><h2>BETTING SLIPS:</h2></div>
-    <div class="flex-container">
-    <% @betting_slips.each do |slip| %>
-        <div class="betting-slip-attr"><%= slip.name %> created by <%= User.find_by(slip.user_id).username %>
+      <div class="all-panels">
+        <div class="all-betting_slips-panel">
+          <div><h2>BETTING SLIPS:</h2></div>
+          <div class="flex-container">
+          <% @betting_slips.each do |slip| %>
+              <div class="betting-slip-attr"><%= slip.name %> created by <%= User.find_by_id(slip.user_id).username %></div>
+          <% end %>
+          </div>
         </div>
-    <% end %>
-    </div>
-  </div>
-</div>
-
-  </div>
+      </div>
 
 </div>
