@@ -6,6 +6,7 @@ class PropsController < ApplicationController
       erb :"/props/new"
     else
       redirect '/'
+    end
   end
 
   get '/props' do
