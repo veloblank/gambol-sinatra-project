@@ -39,7 +39,7 @@ The project is usable in its current form on its master branch. It can be cloned
 
 ## Contributing
 
-Bug reports and contributions via raised issues and pull requests are welcomed on GitHub at https://github.com/veloblank/gambol-sinatra-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to a [Contributor Covenant]() code of conduct.
+Bug reports and contributions via raised issues and pull requests are welcomed on GitHub at https://github.com/veloblank/gambol-sinatra-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to a [Contributor Covenant](https://github.com/veloblank/gambol-sinatra-project/blob/master/CONTRIBUTING.md) code of conduct.
 
 ## Developer Disclaimer
 
