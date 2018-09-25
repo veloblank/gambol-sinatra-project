@@ -2,7 +2,10 @@ require 'pry'
 class PropsController < ApplicationController
 
   get '/props/new' do
-    erb :"/props/new"
+    if is_logged_in?(session)
+      erb :"/props/new"
+    else
+      redirect '/'
   end
 
   get '/props' do
@@ -32,12 +35,15 @@ class PropsController < ApplicationController
 
   get '/prop_errors' do
     erb :prop_errors
-
   end
 
   get '/props/clear_pending_picks' do
-    session["selected_props"] = []
-    redirect '/props'
+    if is_logged_in?(session)
+      session["selected_props"] = []
+      redirect '/props'
+    else
+      redirect '/'
+    end
   end
 
   get '/props/:id' do
