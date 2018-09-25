@@ -1,5 +1,11 @@
 <div class="show-betting-slip-wrapper">
-  <% if !session["selected_props"].empty? %>
+
+  <div class="show-slip">
+    <h3><%= @slip.name %></h3>
+    <p><%= @slip.description %></p>
+  </div>
+
+    <% if !session["selected_props"].empty? %>
     <div class="delete-btn-wrapper">
       <div class="add-btn">
         <form action="/betting-slips/<%= @slip.id %>/add-picks" method="post">
@@ -7,19 +13,17 @@
         </form>
       </div>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="delete-btn">
-    <form class="delete-slip-btn" action="/betting-slips/<%= @slip.id %>/delete" method="post">
-      <input type="hidden" id="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Slip">
-    </form>
+  <div style="text-align: center;" class="delete-btn">
+    <div>
+      <form action="/betting-slips/<%= @slip.id %>/delete" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <div><input type="submit" value="Delete Slip"></div>
+      </form>
+    </div>
   </div>
-
-  <div class="show-slip">
-    <h3><%= @slip.name %></h3>
-    <p><%= @slip.description %></p>
-  </div><hr>
+  <hr>
 
 <% if @slip.props %>
     <% @props.each do |prop| %>
