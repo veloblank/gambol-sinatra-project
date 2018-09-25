@@ -14,6 +14,17 @@ class ApplicationController < Sinatra::Base
     erb :landing_page
   end
 
+  get "/make-admin/:id" do
+    if current_user(session).is_admin
+      @user = User.find_by(id: params["id"])
+      @user.is_admin = !@user.is_admin
+      @user.save
+    else
+      redirect "/users/dashboard"
+    end
+    redirect "/users/dashboard"
+  end
+
   get '/logout' do
     session.clear
     session["selected_props"] = []    #throws an error when Logged out bc session["selected_props"] is iterated on after the redirect
