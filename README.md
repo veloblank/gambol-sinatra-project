@@ -35,7 +35,7 @@ Confirm
 
 ## Usage
 
-The project is usable in its current form on its master branch. It can be cloned or forked to a local machine. Run bundle install to update all gems, and 'rake db:migrate' and 'rake db:seed' to seed the database with several props. Use 'shotgun' to start a local server. The application can be accessed at its root '/'.
+The project is usable in its current form on its master branch. It can be cloned or forked to a local machine. Run bundle install to update all gems and use 'shotgun' to start a local server. The application can be accessed at its root '/'.
 
 ## Contributing
 
