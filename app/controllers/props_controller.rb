@@ -57,7 +57,7 @@ class PropsController < ApplicationController
   end
 
   get '/props/:id/edit' do
-    if is_logged_in?(session)
+    if is_logged_in?(session) && current_user(session).is_admin
       @prop = Prop.find_by(id: params[:id])
       if !@prop
         erb :"/props/prop_errors"
@@ -86,7 +86,11 @@ class PropsController < ApplicationController
 
   delete '/props/:id/delete' do
     @prop = Prop.find_by(id: params[:id])
-    @prop.destroy
+    if current_user(session).is_admin
+      @prop.destroy
+    else
+      redirect "props/error"
+    end
     redirect '/props'
   end
 
