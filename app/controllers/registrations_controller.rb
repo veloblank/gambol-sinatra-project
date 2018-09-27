@@ -1,3 +1,4 @@
+require 'pry'
 class RegistrationsController < ApplicationController
 
   get "/registrations/signup" do

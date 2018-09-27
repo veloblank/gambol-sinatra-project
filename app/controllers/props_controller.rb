@@ -16,6 +16,7 @@ class PropsController < ApplicationController
 
   post '/props' do
     @prop = Prop.new(params)
+    #user = current_user(session)
     if @prop.valid?
       @prop.save
     else

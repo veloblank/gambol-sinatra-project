@@ -1,3 +1,4 @@
+require 'pry'
 class BettingSlipsController < ApplicationController
 
   get '/betting-slips' do
@@ -19,8 +20,8 @@ class BettingSlipsController < ApplicationController
   end
 
   post '/betting-slips' do
-    betting_slip = BettingSlip.new(params)
-    betting_slip.user_id = session[:user_id]
+    user = current_user(session)
+    user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
     if betting_slip.valid?
       betting_slip.save
       redirect "/users/#{session[:user_id]}/betting-slips/#{betting_slip.id}"
