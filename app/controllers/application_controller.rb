@@ -15,10 +15,10 @@ class ApplicationController < Sinatra::Base
 
   get "/make-admin/:id" do
     @user = User.find_by(id: params["id"])
-    if !is_logged_in? || current_user == @user
-        redirect "/users/dashboard"
-    elsif
-      current_user.is_admin
+
+    if !is_logged_in? || current_user == @user #a current user cannot change his admin status
+        redirect "/users/dashboard"     
+    elsif current_user.is_admin
       @user.is_admin = !@user.is_admin
       @user.save
       redirect "/users/dashboard"
@@ -26,12 +26,10 @@ class ApplicationController < Sinatra::Base
       redirect "/users/dashboard"
     end
 
-    # TODO: refactor helpers and session
   end
 
   get '/logout' do
     current_user.props.clear
-    current_user.save
     session.clear       #order matters
     redirect '/'
   end
@@ -40,7 +38,6 @@ class ApplicationController < Sinatra::Base
 
     def clear_pending_picks
       current_user.pending_picks.clear
-      current_user.save
     end
 
     def current_user

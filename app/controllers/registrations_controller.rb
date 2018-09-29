@@ -14,15 +14,18 @@ class RegistrationsController < ApplicationController
   end
 
   post '/registrations/users' do
-    @user = User.new(params)
-    binding.pry
-    @user.is_admin = true if User.all.size == 0       #creates a default admin to the first User if there are no Users in the DB
-    if @user.valid?
-      @user.save
-      session[:user_id] = @user.id
-      redirect "users/dashboard"
+    if is_logged_in?
+      @user = User.new(params)
+      @user.is_admin = true if User.all.size == 0       #creates a default admin to the first User if there are no Users in the DB
+      if @user.valid?
+        @user.save
+        session[:user_id] = @user.id
+        redirect "users/dashboard"
+      else
+        erb :"error"
+      end
     else
-      erb :"error"
+      redirect '/'
     end
   end
 end

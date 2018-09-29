@@ -22,10 +22,10 @@ class BettingSlipsController < ApplicationController
   post '/betting-slips' do
     if is_logged_in?
       user = current_user
-      betting_slip = user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
-      if betting_slip.valid?
-        betting_slip.save
-        redirect "/users/#{session[:user_id]}/betting-slips/#{betting_slip.id}"
+      slip = user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
+      if slip.valid?
+        slip.save
+        redirect "/betting-slips/#{slip.id}"
       else
         redirect '/prop_errors'
       end
@@ -44,17 +44,16 @@ class BettingSlipsController < ApplicationController
         slip.props << prop
       end
       clear_pending_picks
-      redirect "/users/#{session[:user_id]}/betting-slips/#{slip.id}"  #somewhat of a show page, shows the pick in the list
+      redirect "/betting-slips/#{slip.id}"  #somewhat of a show page, shows the pick in the list
     else
       redirect '/'
     end
   end
 
-
-  get '/users/:id/betting-slips/:slip_num' do
+  get '/betting-slips/:slip_num' do
     if is_logged_in?
       @slip = BettingSlip.find_by(id: params[:slip_num])
-      if @slip && current_user.id == params[:id].to_i
+      if @slip && current_user.id == @slip.user_id
         @props = @slip.props
         erb :"betting-slips/show"
       else
