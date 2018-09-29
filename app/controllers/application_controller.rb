@@ -10,28 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :landing_page
-  end
-
-  get "/make-admin/:id" do
-    @user = User.find_by(id: params["id"])
-
-    if !is_logged_in? || current_user == @user #a current user cannot change his admin status
-        redirect "/users/dashboard"     
-    elsif current_user.is_admin
-      @user.is_admin = !@user.is_admin
-      @user.save
-      redirect "/users/dashboard"
-    else
-      redirect "/users/dashboard"
-    end
-
-  end
-
-  get '/logout' do
-    current_user.props.clear
-    session.clear       #order matters
-    redirect '/'
+    erb :landing_page #unused at the moment. Can have landing_page-esque greeting/images
   end
 
   helpers do
