@@ -11,13 +11,32 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/sessions/logout' do
+    #current_user.pending_picks.clear    #can clear or keep pending_picks for a user when they logout
+    session.clear       #order matters
+    redirect '/'
+  end
+
+  get "/users/:id/make-admin" do
+    @user = User.find_by(id: params["id"])
+
+    if !is_logged_in? || current_user == @user #a current user cannot change their own admin status
+        redirect "/users/dashboard"
+    elsif current_user.is_admin
+      @user.is_admin = !@user.is_admin
+      @user.save
+      redirect "/users/dashboard"
+    else
+      redirect "/users/dashboard"
+    end
+
+  end
+
   get '/users/dashboard' do
-    user = User.find_by(id: session[:user_id])
-    if user == current_user
-      # TODO: possible future feature is remove ability to see all Users' betting_slips, since these should be private/have limited access from other users
+    if is_logged_in?
       @users = User.all
       @betting_slips = BettingSlip.all #no reason to call compact on this array, since no bad data should ever be saved
-        erb :"users/dashboard"
+      erb :"users/dashboard"
     else
       redirect '/'
     end

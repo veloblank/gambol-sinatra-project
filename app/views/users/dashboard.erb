@@ -6,11 +6,11 @@
                 <% @users.each do |user| %>
                   <% if user.is_admin%>
                     <div><%= user.username + " -- administrator " %>
-                      <a href="/make-admin/<%= user.id %>">Change Admin Status</a>
+                      <a href="/users/<%= user.id %>/make-admin">Change Admin Status</a>
                     </div>
                   <% else %>
                     <div><%= user.username %>
-                      <a href="/make-admin/<%= user.id %>">Make Admin</a></div>
+                      <a href="/users/<%= user.id %>/make-admin">Make Admin</a></div>
                   <% end %>
                 <% end %>
             <% else %>
