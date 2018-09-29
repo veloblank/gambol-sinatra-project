@@ -5,14 +5,16 @@
     <p><%= @prop.odds %></p>
   </div>
 
-  <div class="delete-btn">
-    <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
-      <input type="hidden" id="hidden" name="_method" value="delete">
+  <% if current_user.is_admin %>
+    <div class="delete-btn">
+      <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
 
-        <div class="show-btn-wrapper">
-          <div><input type="submit" value="Delete"></div>
-        </div>
-      </form>
-      <div><button type="button"><a href="/props/<%= @prop.id %>/add">Add Prop to Pending</a></button></div>
-  </div>
+          <div class="show-btn-wrapper">
+            <div><input type="submit" value="Delete"></div>
+          </div>
+        </form>
+    </div>
+  <% end %>
+  <div><button type="button"><a href="/props/<%= @prop.id %>/add">Add Prop to Pending</a></button></div>
 </div>
