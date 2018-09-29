@@ -66,13 +66,10 @@
 
         <% if !is_logged_in?%>
               <a href="/registrations/login">You Must Login to View List</a>
-        <% elsif is_logged_in? %>
-          <% current_user.props.each do |prop| %>
-            <% if prop = Prop.find_by(id: prop.id) %>
-                <div><a href="/props/<%= prop.id %>"><%= prop.title %></a></div>
-              <% end %>
-          <% end %>
-          <% else %>
+        <% else %>
+            <% current_user.props.each do |prop| %>
+              <div><a href="/props/<%= prop.id %>"><%= prop.title %></a></div>
+            <% end %>
         <% end %>
       </div>
 
