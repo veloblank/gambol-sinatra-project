@@ -42,7 +42,7 @@
 
       <div>
         <%if Helpers.is_logged_in?(session) %>
-          <a href="/logout"><p id='logout'>Logout</p></a>
+          <a href="/sessions/logout"><p id='logout'>Logout</p></a>
         <% else %>
           <a href="/registrations/signup"><span id='signup'>Sign up</span></a>
           <a href="/registrations/login"><span id='login'>Login</span></a>

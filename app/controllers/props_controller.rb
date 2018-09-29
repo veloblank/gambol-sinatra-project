@@ -85,13 +85,13 @@ class PropsController < ApplicationController
       @prop.risk = params[:risk]
       if @prop.valid?
         @prop.save
+        erb :"/props/show"
       else
         redirect "/prop_errors"
       end
     else
       redirect '/'
     end
-    erb :"/props/show"
   end
 
   delete '/props/:id/delete' do
@@ -107,12 +107,4 @@ class PropsController < ApplicationController
     end
     redirect '/props'
   end
-
-
-
-
-
-
-
-
 end
