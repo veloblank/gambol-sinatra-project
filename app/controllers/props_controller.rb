@@ -2,7 +2,7 @@ require 'pry'
 class PropsController < ApplicationController
 
   get '/props/new' do
-    if is_logged_in?(session)
+    if is_logged_in?
       erb :"/props/new"
     else
       redirect '/'
@@ -16,7 +16,7 @@ class PropsController < ApplicationController
 
   post '/props' do
     @prop = Prop.new(params)
-    #user = current_user(session)
+    #user = current_user
     if @prop.valid?
       @prop.save
     else
@@ -26,9 +26,10 @@ class PropsController < ApplicationController
   end
 
   get '/props/:id/add' do
-    if is_logged_in?(session)
+    if is_logged_in?
       prop = Prop.find_by(id: params["id"])
-      session["selected_props"] << prop.id
+      user = current_user
+      user.props << prop
       redirect '/props'
     else
       redirect '/'
@@ -39,10 +40,10 @@ class PropsController < ApplicationController
     erb :prop_errors
   end
 
-  get '/props/clear_pending_picks' do
-    if is_logged_in?(session)
-      session["selected_props"] = []
-      redirect '/props'
+  post '/props/clear_pending_picks' do
+    if is_logged_in?
+      clear_pending_picks
+        redirect '/props'
     else
       redirect '/'
     end
@@ -50,7 +51,7 @@ class PropsController < ApplicationController
 
   get '/props/:id' do
     @prop = Prop.find_by(id: params[:id])
-    if @prop && is_logged_in?(session)
+    if @prop && is_logged_in?
       erb :"/props/show"
     else
       redirect "/prop_errors"
@@ -58,7 +59,7 @@ class PropsController < ApplicationController
   end
 
   get '/props/:id/edit' do
-    if is_logged_in?(session) && current_user(session).is_admin
+    if is_logged_in? && current_user.is_admin
       @prop = Prop.find_by(id: params[:id])
       if !@prop
         erb :"/props/prop_errors"
@@ -87,7 +88,7 @@ class PropsController < ApplicationController
 
   delete '/props/:id/delete' do
     @prop = Prop.find_by(id: params[:id])
-    if current_user(session).is_admin
+    if current_user.is_admin
       @prop.destroy
     else
       redirect "props/error"
