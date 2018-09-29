@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924012036) do
+ActiveRecord::Schema.define(version: 20180928175907) do
 
   create_table "betting_slip_props", force: :cascade do |t|
     t.integer "betting_slip_id"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20180924012036) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "pending_picks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "prop_id"
   end
 
   create_table "props", force: :cascade do |t|
@@ -45,9 +50,10 @@ ActiveRecord::Schema.define(version: 20180924012036) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "is_admin",        default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "is_admin",          default: false
+    t.boolean  "has_pending_picks"
   end
 
 end
