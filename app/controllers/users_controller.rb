@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     if !is_logged_in? || current_user == @user #a current user cannot change their own admin status
         redirect "/users/dashboard"
-    elsif current_user.is_admin
+    elsif is_admin?
       @user.is_admin = !@user.is_admin
       @user.save
       redirect "/users/dashboard"

@@ -5,7 +5,7 @@
     <p><%= @prop.odds %></p>
   </div>
 
-  <% if current_user.is_admin %>
+  <% if is_admin? %>
     <div class="delete-btn">
       <form class="delete-prop-btn" action="/props/<%= @prop.id %>/delete" method="post">
         <input type="hidden" id="hidden" name="_method" value="delete">

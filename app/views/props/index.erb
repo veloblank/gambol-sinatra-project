@@ -10,8 +10,8 @@
           <div class="index-btn">
             <button><a id="view-btn" href="/props/<%= prop.id %>">View</a>
           </div>
-          
-          <% if current_user.is_admin %>
+
+          <% if is_admin? %>
             <div class="index-btn">
               <button><a id="edit-btn" href="/props/<%= prop.id %>/edit">Edit</a></button>
             </div>

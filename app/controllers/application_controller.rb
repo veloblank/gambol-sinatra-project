@@ -27,5 +27,9 @@ class ApplicationController < Sinatra::Base
     def is_logged_in?
       !!current_user
     end
+
+    def is_admin?
+      current_user.is_admin
+    end
   end
 end

@@ -19,7 +19,7 @@
       <ul>
         <li><a href="/users/dashboard">Dashboard</li></a>
 
-        <% if is_logged_in? && current_user.is_admin %>
+        <% if is_logged_in? && is_admin? %>
             <div class="dropdown">
               <button class="dropbtn">Sports Props</button>
                 <div class="dropdown-content">
