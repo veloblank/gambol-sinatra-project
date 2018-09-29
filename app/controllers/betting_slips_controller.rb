@@ -2,8 +2,8 @@ require 'pry'
 class BettingSlipsController < ApplicationController
 
   get '/betting-slips' do
-    if is_logged_in?(session)
-      @user = current_user(session)
+    if is_logged_in?
+      @user = current_user
       @slips = @user.betting_slips.all
       erb :"betting-slips/index"
     else
@@ -12,7 +12,7 @@ class BettingSlipsController < ApplicationController
   end
 
   get '/betting-slips/new' do
-    if is_logged_in?(session)
+    if is_logged_in?
       erb :"betting-slips/new"
     else
       redirect '/'
@@ -20,8 +20,8 @@ class BettingSlipsController < ApplicationController
   end
 
   post '/betting-slips' do
-    user = current_user(session)
-    user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
+    user = current_user
+    betting_slip = user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
     if betting_slip.valid?
       betting_slip.save
       redirect "/users/#{session[:user_id]}/betting-slips/#{betting_slip.id}"
@@ -47,9 +47,9 @@ class BettingSlipsController < ApplicationController
 
 
   get '/users/:id/betting-slips/:slip_num' do
-    if is_logged_in?(session)
+    if is_logged_in?
       @slip = BettingSlip.find_by(id: params[:slip_num])
-      if @slip && current_user(session).id == params[:id].to_i
+      if @slip && current_user.id == params[:id].to_i
         @props = @slip.props
         erb :"betting-slips/show"
       else
@@ -60,8 +60,13 @@ class BettingSlipsController < ApplicationController
 
   delete '/betting-slips/:id/delete' do
     betting_slip = BettingSlip.find_by(id: params[:id])
-    betting_slip.destroy
-    redirect '/betting-slips'
+    user = current_user
+    if betting_slip.user.id == user.id
+      betting_slip.destroy
+      redirect '/betting-slips'
+    else
+      redirect "prop_errors"
+    end
   end
 
 end
