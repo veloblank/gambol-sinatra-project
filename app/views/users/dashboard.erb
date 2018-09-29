@@ -2,7 +2,7 @@
         <div class="all-panels">
           <div class="all-users-panel">
             <div><h2>USERS:</h2></div>
-            <% if Helpers.current_user(session).is_admin %>
+            <% if current_user.is_admin %>
                 <% @users.each do |user| %>
                   <% if user.is_admin%>
                     <div><%= user.username + " -- administrator " %>
