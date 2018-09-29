@@ -5,17 +5,17 @@
       <span class="prop-attr-desc"><%= prop.description %></span>
       <span class="prop-attr" id="odds">Odds: <%= prop.odds %></span>
 
-      <div class="btn-wrap">
-        <div class="index-btn">
-          <button><a id="view-btn" href="/props/<%= prop.id %>">View</a>
-        </div>
       <% if is_logged_in? && current_user.is_admin%>
-        <div class="index-btn">
-          <button><a id="edit-btn" href="/props/<%= prop.id %>/edit">Edit</a></button>
+        <div class="btn-wrap">
+          <div class="index-btn">
+            <button><a id="view-btn" href="/props/<%= prop.id %>">View</a>
+          </div>
+          <div class="index-btn">
+            <button><a id="edit-btn" href="/props/<%= prop.id %>/edit">Edit</a></button>
+          </div>
+          <div><button type="button"><a href="/props/<%= prop.id %>/add">Add Prop to Pending</a></button></div>
         </div>
-        <div><button type="button"><a href="/props/<%= prop.id %>/add">Add Prop to Pending</a></button></div>
       <% end %>
-      </div>
     </div>
   <% end %>
 </div>
