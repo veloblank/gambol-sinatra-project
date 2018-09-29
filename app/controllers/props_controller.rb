@@ -9,21 +9,25 @@ class PropsController < ApplicationController
     end
   end
 
+  post '/props' do
+    if is_logged_in?
+      @prop = Prop.new(params)
+      if @prop.valid?
+        @prop.save
+      else
+        redirect "/prop_errors"
+      end
+    else
+      redirect '/'
+    end
+    erb :"/props/show"
+  end
+
   get '/props' do
     @props = Prop.all
     erb :"/props/index"
   end
 
-  post '/props' do
-    @prop = Prop.new(params)
-    #user = current_user
-    if @prop.valid?
-      @prop.save
-    else
-      redirect "/prop_errors"
-    end
-    erb :"/props/show"
-  end
 
   get '/props/:id/add' do
     if is_logged_in?
@@ -73,25 +77,33 @@ class PropsController < ApplicationController
   end
 
   patch '/props/:id/edit' do
-    @prop = Prop.find_by(id: params[:id])
-    @prop.title = params[:title]
-    @prop.description = params[:description]
-    @prop.odds = params[:odds]
-    @prop.risk = params[:risk]
-    if @prop.valid?
-      @prop.save
+    if is_logged_in?
+      @prop = Prop.find_by(id: params[:id])
+      @prop.title = params[:title]
+      @prop.description = params[:description]
+      @prop.odds = params[:odds]
+      @prop.risk = params[:risk]
+      if @prop.valid?
+        @prop.save
+      else
+        redirect "/prop_errors"
+      end
     else
-      redirect "/prop_errors"
+      redirect '/'
     end
     erb :"/props/show"
   end
 
   delete '/props/:id/delete' do
-    @prop = Prop.find_by(id: params[:id])
-    if current_user.is_admin
-      @prop.destroy
+    if is_logged_in?
+      @prop = Prop.find_by(id: params[:id])
+      if current_user.is_admin
+        @prop.destroy
+      else
+        redirect "props/error"
+      end
     else
-      redirect "props/error"
+      redirect '/'
     end
     redirect '/props'
   end
