@@ -4,7 +4,7 @@ class BettingSlipsController < ApplicationController
   get '/betting-slips' do
     if is_logged_in?
       @user = current_user
-      @slips = @user.betting_slips.all
+      @slips = @user.betting_slips
       erb :"betting-slips/index"
     else
       redirect '/'
@@ -20,30 +20,34 @@ class BettingSlipsController < ApplicationController
   end
 
   post '/betting-slips' do
-    user = current_user
-    betting_slip = user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
-    if betting_slip.valid?
-      betting_slip.save
-      redirect "/users/#{session[:user_id]}/betting-slips/#{betting_slip.id}"
+    if is_logged_in?
+      user = current_user
+      betting_slip = user.betting_slips.build(params) #refactored from messy BettingSlip.new and/or shovel
+      if betting_slip.valid?
+        betting_slip.save
+        redirect "/users/#{session[:user_id]}/betting-slips/#{betting_slip.id}"
+      else
+        redirect '/prop_errors'
+      end
     else
-      redirect '/prop_errors'
+      redirect '/'
     end
   end
 
   post '/betting-slips/:id/add-picks' do
-    slip = BettingSlip.find_by(id: params[:id])
-    props = current_user.props
-    props.each do |prop_id|
-      prop = Prop.find_by(id: prop_id)
-      slip.props << prop
-    end
-    if slip.save
-      clear_pending_picks
-      redirect "/props"
-    else
-      redirect '/prop_errors'
-    end
+    if is_logged_in?
+      slip = BettingSlip.find_by(id: params[:id])
+      props = current_user.props
 
+      props.each do |prop_id|
+        prop = Prop.find_by(id: prop_id)
+        slip.props << prop
+      end
+      clear_pending_picks
+      redirect "/users/#{session[:user_id]}/betting-slips/#{slip.id}"  #somewhat of a show page, shows the pick in the list
+    else
+      redirect '/'
+    end
   end
 
 
@@ -54,7 +58,7 @@ class BettingSlipsController < ApplicationController
         @props = @slip.props
         erb :"betting-slips/show"
       else
-        redirect "prop_errors"
+        redirect "prop_errors"    #only betting slips creators who are current_user can view list
       end
     end
   end
