@@ -5,7 +5,7 @@
     <p><%= @slip.description %></p>
   </div>
 
-    <% if !session["selected_props"].empty? %>
+    <% if !current_user.pending_picks.empty? %>
     <div class="delete-btn-wrapper">
       <div class="add-btn">
         <form action="/betting-slips/<%= @slip.id %>/add-picks" method="post">

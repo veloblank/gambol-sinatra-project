@@ -39,7 +39,6 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def clear_pending_picks
-      binding.pry
       current_user.pending_picks.clear
       current_user.save
     end

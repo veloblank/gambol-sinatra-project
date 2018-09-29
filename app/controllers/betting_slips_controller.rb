@@ -32,13 +32,14 @@ class BettingSlipsController < ApplicationController
 
   post '/betting-slips/:id/add-picks' do
     slip = BettingSlip.find_by(id: params[:id])
-    props = session["selected_props"]
+    props = current_user.props
     props.each do |prop_id|
       prop = Prop.find_by(id: prop_id)
       slip.props << prop
     end
     if slip.save
-      redirect "/props/clear_pending_picks"
+      clear_pending_picks
+      redirect "/props"
     else
       redirect '/prop_errors'
     end
