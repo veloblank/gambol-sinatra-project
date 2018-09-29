@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
   end
 
   get "/registrations/login" do
-    if is_logged_in?(session)
+    if is_logged_in?
       redirect "/users/dashboard"
     else
       erb :"sessions/login"
@@ -15,6 +15,7 @@ class RegistrationsController < ApplicationController
 
   post '/registrations/users' do
     @user = User.new(params)
+    binding.pry
     @user.is_admin = true if User.all.size == 0       #creates a default admin to the first User if there are no Users in the DB
     if @user.valid?
       @user.save
