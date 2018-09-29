@@ -63,14 +63,16 @@ class BettingSlipsController < ApplicationController
   end
 
   delete '/betting-slips/:id/delete' do
-    betting_slip = BettingSlip.find_by(id: params[:id])
-    user = current_user
-    if betting_slip.user.id == user.id
-      betting_slip.destroy
-      redirect '/betting-slips'
+    if logged_in?
+      betting_slip = BettingSlip.find_by(id: params[:id])
+      if betting_slip.user.id == current_user.id
+        betting_slip.destroy
+        redirect '/betting-slips'
+      else
+        redirect "prop_errors"
+      end
     else
-      redirect "prop_errors"
+      redirect '/'
     end
   end
-
 end
