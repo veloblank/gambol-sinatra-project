@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     elsif is_admin?
       @user.is_admin = !@user.is_admin
       @user.save
+      # TODO: See if this can moved from the controller to the model
       redirect "/users/dashboard"
     else
       redirect "/users/dashboard"
