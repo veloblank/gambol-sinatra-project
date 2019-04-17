@@ -8,6 +8,8 @@ gem 'require_all'
 gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
+gem "nokogiri", ">= 1.8.5"
+gem "rack", ">= 2.0.6"
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
