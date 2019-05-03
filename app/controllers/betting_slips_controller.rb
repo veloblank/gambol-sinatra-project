@@ -1,4 +1,3 @@
-require 'pry'
 class BettingSlipsController < ApplicationController
 
   get '/betting-slips' do

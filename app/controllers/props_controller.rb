@@ -1,4 +1,3 @@
-require 'pry'
 class PropsController < ApplicationController
 
   get '/props/new' do
