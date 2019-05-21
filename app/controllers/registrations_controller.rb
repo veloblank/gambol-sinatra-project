@@ -15,8 +15,7 @@ class RegistrationsController < ApplicationController
   post '/registrations/users' do
     @user = User.new(params)
     @user.is_admin = true if User.all.size == 0       #creates a default admin to the first User if there are no Users in the DB
-    if @user.valid?
-      @user.save
+    if @user.save
       session[:user_id] = @user.id
       redirect "users/dashboard"
     else

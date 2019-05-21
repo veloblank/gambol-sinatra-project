@@ -3,7 +3,7 @@
   <ul>
     <% @user.errors.each do |key, error| %>
       <% unless key == :password_digest %>
-        <li><div><%= "Your #{key.to_s} #{error}." %></div></li>
+        <li><%= "Your #{key.to_s} #{error}." %></li>
       <% end %>
     <% end %>
   </ul>

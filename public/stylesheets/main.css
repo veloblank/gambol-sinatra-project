@@ -32,11 +32,11 @@ body {
   text-decoration: underline;
 }
 
-li {
+.nav-bar li {
     float: right;
 }
 
-li a {
+.nav-bar li a {
     display: block;
     color: white;
     text-align: center;
@@ -46,7 +46,7 @@ li a {
     font-family: 'Open Sans', sans-serif;
 }
 
-li a:hover {
+.navbar li a:hover {
     background-color: #111;
 }
 
