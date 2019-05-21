@@ -11,8 +11,7 @@ class UsersController < ApplicationController
   end
 
   get '/sessions/logout' do
-    #current_user.pending_picks.clear    #can clear or keep pending_picks for a user when they logout
-    session.clear       #order matters
+    session.clear
     redirect '/'
   end
 

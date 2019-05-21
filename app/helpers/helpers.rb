@@ -7,5 +7,5 @@ class Helpers #create a model in case I want to use the methods in my views, sim
 
   def self.is_logged_in?(session_hash)
     !!current_user(session_hash)
-  end
+  end 
 end
